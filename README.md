@@ -115,3 +115,15 @@ $ go get golang.org/x/tools/cmd/godoc
 ```
 
 在本地启动文档`godoc -http :8888`
+
+
+## 对函数使用参数
+
+```go
+// hello.go
+func Hello(name string) string  {
+	return "Hello, " + name
+}
+```
+
+为函数添加一个类型是`string`的变量`name`

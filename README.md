@@ -142,6 +142,7 @@ func Hello(name string) string  {
 ## 子测试
 
 ```go
+// hello_test.go
 func TestHello(t *testing.T) {
 
     t.Run("saying hello to people", func(t *testing.T) {
@@ -163,4 +164,28 @@ func TestHello(t *testing.T) {
 	})
 }
 ```
+
+## 重构测试并抽象出断言函数
+
+```go
+// hello_test.go
+func TestHello(t *testing.T)  {
+	asserCorrectMessage := func (t *testing.T, got, want string)  {
+		t.Helper()
+		if got != want {
+			t.Errorf("got '%q' want '%q'", got, want)
+		}
+	}
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello, Chris"
+		asserCorrectMessage(t, got, want)
+	})
+}
+```
+
+在go中，你可以在其他函数中声明函数并将它们分配变量。你可以想调用普通函数一样调用它们。
+
+`t.Helper()`告诉测试套件这个方法是辅助函数。通过这样做，当测试失败时所报的行号将在函数调用中而不是辅助函数内部。
+
 

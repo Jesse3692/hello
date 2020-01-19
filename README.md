@@ -127,3 +127,14 @@ func Hello(name string) string  {
 ```
 
 为函数添加一个类型是`string`的变量`name`
+
+## 使用常量
+
+```go
+const englishHelloPrefix = "Hello, "
+
+// Hello func return "Hello, World"
+func Hello(name string) string  {
+	return englishHelloPrefix + name
+}
+```

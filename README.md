@@ -188,4 +188,24 @@ func TestHello(t *testing.T)  {
 
 `t.Helper()`告诉测试套件这个方法是辅助函数。通过这样做，当测试失败时所报的行号将在函数调用中而不是辅助函数内部。
 
+## 函数的第二个参数
+
+```go
+const helloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const spanish = "Spanish"
+
+// Hello func return "Hello, World"
+func Hello(name string, language string) string  {
+	if name == "" {
+		name = "World"
+	}
+
+	if language == spanish {
+		return spanishHelloPrefix + name
+	}
+	return helloPrefix + name
+}
+```
+
 
